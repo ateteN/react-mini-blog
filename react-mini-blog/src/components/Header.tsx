@@ -1,4 +1,5 @@
 import styles from '../styles/Header.module.css';
+import withLogger from './withLogger';
 
 function Header() {
   return (
@@ -13,4 +14,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default withLogger(Header);
