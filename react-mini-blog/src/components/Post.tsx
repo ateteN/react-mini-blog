@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { Post as PostType } from '../types/Post';
 import styles from '../styles/Post.module.css';
 
@@ -20,7 +21,7 @@ function getPreview(content: string, wordCount = 12): string {
   return words.slice(0, wordCount).join(' ') + '...';
 }
 
-function Post({ post }: PostProps) {
+function PostComponent({ post }: PostProps) {
   const isFeaturedAuthor = post.author === FEATURED_AUTHOR;
   const highlightStyle = isFeaturedAuthor
     ? { backgroundColor: '#fef3c7', borderLeft: '4px solid #f59e0b' }
@@ -33,11 +34,13 @@ function Post({ post }: PostProps) {
         {isNew(post.datePosted) && <span className={styles.badge}>New!</span>}
       </div>
       <p className={styles.meta}>
-        By {post.author} · {new Date(post.datePosted).toLocaleDateString()}
+        By {post.author} - {new Date(post.datePosted).toLocaleDateString()}
       </p>
       <p className={styles.preview}>{getPreview(post.content)}</p>
     </article>
   );
 }
+
+const Post = memo(PostComponent);
 
 export default Post;
