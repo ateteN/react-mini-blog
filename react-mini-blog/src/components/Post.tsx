@@ -22,11 +22,6 @@ function getPreview(content: string, wordCount = 12): string {
 
 function Post({ post }: PostProps) {
   const isFeaturedAuthor = post.author === FEATURED_AUTHOR;
-
-  // Inline style used here specifically because the background color
-  // depends on a runtime condition (which author wrote the post),
-  // rather than being a fixed, reusable style — a good fit for inline
-  // styles alongside our external CSS module.
   const highlightStyle = isFeaturedAuthor
     ? { backgroundColor: '#fef3c7', borderLeft: '4px solid #f59e0b' }
     : {};
