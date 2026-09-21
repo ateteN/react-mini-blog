@@ -1,0 +1,64 @@
+.footer {
+  margin-top: auto;
+  border-top: 1px solid #eef0f3;
+  background-color: #ffffff;
+  padding: 3rem 2rem 3.5rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.content {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo::after {
+  content: '.';
+  color: #ff5252;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.copyright {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2.25rem 1.25rem 2.75rem;
+  }
+
+  .content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
