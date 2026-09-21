@@ -3,5 +3,7 @@ export interface Post {
   title: string;
   author: string;
   content: string;
-  datePosted: string; 
+  datePosted: string;
+  imageUrl?: string;
+  topic?: string;
 }

@@ -24,17 +24,23 @@ function getPreview(content: string, wordCount = 12): string {
 function PostComponent({ post }: PostProps) {
   const isFeaturedAuthor = post.author === FEATURED_AUTHOR;
   const highlightStyle = isFeaturedAuthor
-    ? { backgroundColor: '#fef3c7', borderLeft: '4px solid #f59e0b' }
+    ? { backgroundColor: '#feeac7ff' }
     : {};
 
   return (
     <article className={styles.post} style={highlightStyle}>
+      {post.imageUrl && (
+        <div className={styles.imageWrapper}>
+          <img src={post.imageUrl} alt={post.title} className={styles.postImage} loading="lazy" />
+        </div>
+      )}
       <div className={styles.postHeader}>
         <h2 className={styles.title}>{post.title}</h2>
         {isNew(post.datePosted) && <span className={styles.badge}>New!</span>}
       </div>
       <p className={styles.meta}>
-        By {post.author} - {new Date(post.datePosted).toLocaleDateString()}
+        By {post.author} - {new Date(post.datePosted).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+        {post.topic && <span className={styles.topic}>#{post.topic.toUpperCase()}</span>}
       </p>
       <p className={styles.preview}>{getPreview(post.content)}</p>
     </article>

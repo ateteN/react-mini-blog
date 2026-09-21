@@ -1,24 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:global(:root) {
+  --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --color-dark: #111827;
+  --color-accent: #ff5252;
+  --color-muted: #64748b;
+  --color-bg: #fafaf9;
+}
+
+:global(body) {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:global(#root) {
+  text-align: left;
+  border-inline: none;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: var(--color-bg);
+}
+
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #1e293b;
-  color: white;
+  padding: 1.25rem 3rem;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #eef0f3;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 0.5px;
+  font-family: var(--font-primary);
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #111827;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo::after {
+  content: '.';
+  color: #ff5252;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.logo:hover {
+  transform: scale(1.02);
 }
 
 .navLink {
-  color: #38bdf8;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f172a;
+  background-color: #f1f5f9;
+  border: 1px solid transparent;
+  border-radius: 9999px;
   text-decoration: none;
-  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .navLink:hover {
-  text-decoration: underline;
+  background-color: #0f172a;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  text-decoration: none;
 }
+
+.navLink:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 1.25rem;
+  }
+
+  .logo {
+    font-size: 1.35rem;
+  }
+
+  .navLink {
+    padding: 0.45rem 1rem;
+    font-size: 0.8rem;
+  }
+}
