@@ -6,7 +6,7 @@ interface PostProps {
   post: PostType;
 }
 
-const FEATURED_AUTHOR = 'Atete Norette';
+export const FEATURED_AUTHOR = 'Atete Norette';
 
 function isNew(datePosted: string): boolean {
   const posted = new Date(datePosted).getTime();

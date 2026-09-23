@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Post } from '../types/Post';
-import PostItem from './Post';
+import PostItem, { FEATURED_AUTHOR } from './Post';
 import styles from '../styles/PostList.module.css';
 
 const samplePosts: Post[] = [
@@ -66,27 +66,29 @@ const samplePosts: Post[] = [
   },
 ];
 
-const TOPICS = ['All', 'TypeScript', 'Tooling', 'React', 'CSS', 'Architecture', 'Accessibility'];
+const FILTER_TAGS = ['All', 'Featured', 'TypeScript', 'Tooling', 'React', 'CSS', 'Architecture', 'Accessibility'];
 
 function PostList() {
-  const [selectedTopic, setSelectedTopic] = useState('All');
+  const [selectedFilter, setSelectedFilter] = useState('All');
 
   const filteredPosts =
-    selectedTopic === 'All'
+    selectedFilter === 'All'
       ? samplePosts
-      : samplePosts.filter((post) => post.topic === selectedTopic);
+      : selectedFilter === 'Featured'
+        ? samplePosts.filter((post) => post.author === FEATURED_AUTHOR)
+        : samplePosts.filter((post) => post.topic === selectedFilter);
 
   return (
     <section className={styles.section}>
       <div className={styles.filterBar}>
-        {TOPICS.map((topic) => (
+        {FILTER_TAGS.map((filter) => (
           <button
-            key={topic}
+            key={filter}
             type="button"
-            className={`${styles.filterButton} ${selectedTopic === topic ? styles.activeFilter : ''}`}
-            onClick={() => setSelectedTopic(topic)}
+            className={`${styles.filterButton} ${selectedFilter === filter ? styles.activeFilter : ''}`}
+            onClick={() => setSelectedFilter(filter)}
           >
-            {topic}
+            {filter}
           </button>
         ))}
       </div>
